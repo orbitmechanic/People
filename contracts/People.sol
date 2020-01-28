@@ -1,5 +1,5 @@
-import "./Ownable.sol";
 pragma solidity 0.5.12;
+import "./Ownable.sol";
 
 contract People is Ownable{
 
@@ -17,7 +17,7 @@ contract People is Ownable{
     uint public balance;
 
     modifier costs(uint cost){
-        require(msg.value >= cost);
+        require(msg.value >= cost,'Send more money.');
         _;
     }
 
@@ -54,8 +54,7 @@ contract People is Ownable{
                     people[msg.sender].senior
                 )
             )
-            ==
-            keccak256(
+            == keccak256(
                 abi.encodePacked(
                     newPerson.name,
                     newPerson.age,
